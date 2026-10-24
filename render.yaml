@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: smart-attendance-backend
+    runtime: python
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        value: "sqlite:///./attendance.db"
+      - key: PROJECT_NAME
+        value: "Smart Attendance Pattern Analyzer"
+      - key: LATE_ATTENDANCE_WEIGHT
+        value: "1.0"
+      - key: EXCLUDE_EXCUSED_FROM_DENOMINATOR
+        value: "True"
+      - key: PROVISIONAL_COMPLETENESS_THRESHOLD_PCT
+        value: "85.0"
+      - key: CONSECUTIVE_ABSENCE_THRESHOLD
+        value: "3"
+      - key: ATTENDANCE_DROP_THRESHOLD_PCT
+        value: "15.0"
+      - key: BASELINE_WEEKS
+        value: "4"
+      - key: CURRENT_WINDOW_WEEKS
+        value: "2"
+      - key: MIN_SESSIONS_FOR_DROP_ANALYSIS
+        value: "4"
+      - key: MISSING_RECORD_THRESHOLD_PCT
+        value: "10.0"

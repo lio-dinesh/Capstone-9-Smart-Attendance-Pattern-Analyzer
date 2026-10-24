@@ -6,10 +6,10 @@ class Settings(BaseSettings):
     VERSION: str = "1.0.0"
     API_V1_STR: str = "/api"
     
-    # Real MySQL Database Configuration (defaulting to configured MySQL instance)
+    # Database Configuration (falls back to built-in SQLite when no external DB is configured)
     DATABASE_URL: str = os.getenv(
         "DATABASE_URL", 
-        "mysql+pymysql://root:dinesh%4019052008@localhost:3306/smart_attendance_db?charset=utf8mb4"
+        "sqlite:///./attendance.db"
     )
     
     # Anomaly Rule Thresholds
