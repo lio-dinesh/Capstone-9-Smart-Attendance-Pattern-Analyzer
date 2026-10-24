@@ -1,6 +1,7 @@
 import React from 'react';
 import { Download, RefreshCw } from 'lucide-react';
 import { NavPage } from './Sidebar';
+import { BASE_URL } from '../../services/api';
 
 interface HeaderProps {
   activePage: NavPage;
@@ -47,7 +48,7 @@ export const Header: React.FC<HeaderProps> = ({
   const current = pageMeta[activePage] || { title: 'Dashboard', subtitle: '' };
 
   const handleExportSummary = () => {
-    window.open('/api/exports/summary', '_blank');
+    window.open(`${BASE_URL}/exports/summary`, '_blank');
   };
 
   return (

@@ -13,7 +13,7 @@ import {
   AlertCircle,
   HelpCircle,
 } from 'lucide-react';
-import { fetchRecords, patchAttendanceRecord, importDatasets } from '../services/api';
+import { fetchRecords, patchAttendanceRecord, importDatasets, BASE_URL } from '../services/api';
 import { FilterState, AttendanceStatus, ReconciledRecord } from '../types';
 import { GlassCard } from '../components/common/GlassCard';
 import { getStatusBadgeClasses } from '../lib/utils';
@@ -114,7 +114,7 @@ export const DataExplorerPage: React.FC<DataExplorerPageProps> = ({ filters }) =
 
         <div className="flex items-center gap-3">
           <a
-            href="/api/datasets/templates/expected"
+            href={`${BASE_URL}/datasets/templates/expected`}
             download
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 transition-colors shadow-xs"
           >
@@ -123,7 +123,7 @@ export const DataExplorerPage: React.FC<DataExplorerPageProps> = ({ filters }) =
           </a>
 
           <a
-            href="/api/datasets/templates/attendance"
+            href={`${BASE_URL}/datasets/templates/attendance`}
             download
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 transition-colors shadow-xs"
           >

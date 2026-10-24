@@ -11,7 +11,10 @@ import {
   AttendanceStatus,
 } from '../types';
 
-const BASE_URL = '/api';
+const envApiUrl = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || '';
+export const BASE_URL = envApiUrl
+  ? (envApiUrl.endsWith('/api') ? envApiUrl.replace(/\/$/, '') : `${envApiUrl.replace(/\/$/, '')}/api`)
+  : '/api';
 
 export async function fetchHealth() {
   const res = await fetch(`${BASE_URL}/health`);
